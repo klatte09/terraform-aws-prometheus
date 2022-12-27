@@ -7,7 +7,18 @@ This is a template to use for baseline. The default actions will provide updates
 
 The following content needed to be created and managed:
  - Introduction
-     - Explaination of module 
+     - Explaination of module
+       - Terraform Modules: 
+               - # This Terraform modules are just for references feel free to use any other configurations
+               - List of resources created by terraform modules:
+                 1. VPC and Subnet with all the configuration
+                 2. EKS cluster with all nodes configuration
+                 3. AWS managed prometheous workspace
+                 4. Required IAM Role/Policy and EC2 instance with node exporter confgiured using user data 
+       - k8s Modules:
+               - cAdvisor for pod level metrics
+               - Grafana with 2 dashborad one for Pod level another for Node level metrics
+               - 
      - Intended users
  - Resource created and managed by this module
  - Example Usages
