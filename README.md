@@ -33,7 +33,10 @@ The following content needed to be created and managed:
 
 ## Providers
 
-No providers.
+Provider Used are:
+1. kubernetes provider
+2. aws provider
+
 
 ## Modules
 
@@ -41,16 +44,41 @@ No modules.
 
 ## Resources
 
-No resources.
+Terraform resources like:
+  1. kubernetes_ingress_v1
+  2. kubernetes_daemonset_v1
+  3. kubernetes_service_v1
 
 ## Inputs
 
-No inputs.
+Changes in variable.tf:
+  1. Change in cluster-name
+  2. Change in Vpc-name
+  3. Change in region
 
 ## Outputs
 
-No outputs.
-<!-- END_TF_DOCS -->
+Expected Outputs are:
+  1. Daemon_set is created in monitoring namespace
+  2. NODE-PORT service is created in monitoring namespace
+  3. Ingres Rule is created in monitoring namespace 
+  4. An ALB{application load balancer is created with ingress rules} ##NOTE: THIS STEP IS DEPENDENT ON INGRESS CONTROLLER IN EKS IF INGRESS CONTROLLER IN NOT SETUP IN YOUR EKS FOLLOW{ Ref: https://docs.aws.amazon.com/eks/latest/userguide/aws-load-balancer-controller.html } 
+  5. You can go to ALB dns-name to check if node level metrics are available on DNS name
+  6. If last step is verified you can mention your DNS-name in prometheous server to pull metrics
+    {
+      scrape_configs:
+        - job_name: node
+          scrape_interval: 15s
+          scrape_timeout: 10s
+          metrics_path: /metrics
+          scheme: http
+          static_configs:
+        - targets:
+          - k8s-monitori-***.elb.amazonaws.com 
+    }
+    Add this configuration to your prometheous server { /etc/prometheous/prometheous.yml}
+
+
 
 ## Authors
 
