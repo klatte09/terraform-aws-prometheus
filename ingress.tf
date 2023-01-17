@@ -1,10 +1,10 @@
 resource "kubernetes_ingress_v1" "node-exporter" {
   metadata {
-    name = "node-exporter"
+    name      = "node-exporter"
     namespace = "monitoring"
     annotations = {
-        "kubernetes.io/ingress.class" = "alb"
-        "alb.ingress.kubernetes.io/scheme" = "internet-facing"
+      "kubernetes.io/ingress.class"      = "alb"
+      "alb.ingress.kubernetes.io/scheme" = "internet-facing"
     }
   }
 
@@ -12,12 +12,12 @@ resource "kubernetes_ingress_v1" "node-exporter" {
     rule {
       http {
         path {
-          path = "/"
+          path      = "/"
           path_type = "Prefix"
           backend {
             service {
               name = "node-exporter"
-              port { 
+              port {
                 number = 80
               }
             }
@@ -69,14 +69,14 @@ resource "kubernetes_ingress_v1" "node-exporter" {
 #           path = "/node"
 #         } 
 
-    # backend {
-    #   service {
-    #     name = "node-exporter"         
-    #     port {
-    #       number = 9100
-    #     }
-    #   }
-    # }
+# backend {
+#   service {
+#     name = "node-exporter"         
+#     port {
+#       number = 9100
+#     }
+#   }
+# }
 #       }
 # }
 # }

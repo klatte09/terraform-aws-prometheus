@@ -1,6 +1,6 @@
 resource "kubernetes_service_v1" "node-exporter" {
   metadata {
-    name = "node-exporter"
+    name      = "node-exporter"
     namespace = "monitoring"
   }
   spec {
@@ -8,11 +8,11 @@ resource "kubernetes_service_v1" "node-exporter" {
       name = "node-exporter"
     }
     port {
-        name = "http"
-        port = 80
-        target_port = 9100
-        node_port = 30001
-      }
+      name        = "http"
+      port        = 80
+      target_port = 9100
+      node_port   = 30001
+    }
     type = "NodePort"
   }
 }

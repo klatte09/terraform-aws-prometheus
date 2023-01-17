@@ -1,15 +1,15 @@
 variable "vpc_name" {
-   default = "main"
+  default = "main"
 }
 
 variable "namespace" {
-    default = "monitoring"
+  default = "monitoring"
 }
 
 variable "cluster_name" {
-    default = "demo"
+  default = "demo"
 }
 
 variable "region" {
-    default = "us-east-2"
+  default = "us-east-2"
 }

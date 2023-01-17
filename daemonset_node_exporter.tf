@@ -29,18 +29,18 @@ resource "kubernetes_daemon_set_v1" "node-exporter" {
           ]
 
           port {
-            name          = "metrics"
+            name           = "metrics"
             container_port = 9100
           }
 
           volume_mount {
-            name      = "proc"
+            name       = "proc"
             mount_path = "/host/proc"
             read_only  = true
           }
 
           volume_mount {
-            name      = "sys"
+            name       = "sys"
             mount_path = "/host/sys"
             read_only  = true
           }
